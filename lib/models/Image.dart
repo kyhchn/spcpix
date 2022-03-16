@@ -1,37 +1,33 @@
-// To parse this JSON data, do
-//
-//     final image = imageFromJson(jsonString);
-
 import 'dart:convert';
 
-List<Image> imageFromJson(String str) =>
-    List<Image>.from(json.decode(str).map((x) => Image.fromJson(x)));
+List<ImageRemote> ImageRemoteFromJson(String str) => List<ImageRemote>.from(
+    json.decode(str).map((x) => ImageRemote.fromJson(x)));
 
-String imageToJson(List<Image> data) =>
+String ImageRemoteToJson(List<ImageRemote> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Image {
-  Image({
-    required this.copyright,
+class ImageRemote {
+  ImageRemote({
+    this.copyright,
     required this.date,
     required this.explanation,
-    required this.hdurl,
-    required this.mediaType,
-    required this.serviceVersion,
+    this.hdurl,
+    this.mediaType,
+    this.serviceVersion,
     required this.title,
     required this.url,
   });
 
-  String copyright;
+  String? copyright;
   DateTime date;
   String explanation;
-  String hdurl;
-  String mediaType;
-  String serviceVersion;
+  String? hdurl;
+  String? mediaType;
+  String? serviceVersion;
   String title;
   String url;
 
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
+  factory ImageRemote.fromJson(Map<String, dynamic> json) => ImageRemote(
         copyright: json["copyright"] == null ? null : json["copyright"],
         date: DateTime.parse(json["date"]),
         explanation: json["explanation"],

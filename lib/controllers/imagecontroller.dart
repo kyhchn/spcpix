@@ -3,7 +3,13 @@ import 'package:spcpix/models/Image.dart';
 import 'package:spcpix/services/image_services.dart';
 
 class ImageController extends GetxController {
-  var imageList = List<Image>.empty().obs;
+  @override
+  void onInit() {
+    fetchImages();
+    super.onInit();
+  }
+
+  var imageList = List<ImageRemote>.empty().obs;
   void fetchImages() async {
     var images = await ImageServices.getImage();
     if (images != null) {
