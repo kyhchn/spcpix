@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:spcpix/controllers/imagecontroller.dart';
-import 'package:spcpix/hompage.dart';
+import 'package:spcpix/homepage.dart';
 import 'package:spcpix/views/image_tile.dart';
 
 void main() {
@@ -16,11 +16,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('SPCPIX'),
-          ),
-          body: HomePage()),
+      home: HomePage(),
+      theme: ThemeData(
+        fontFamily: 'WorkSans',
+        primaryColor: Colors.black,
+        appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(color: Colors.black), elevation: 0),
+        primarySwatch: Colors.yellow,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
     );
   }
 }
