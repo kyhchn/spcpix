@@ -9,11 +9,17 @@ class ImageController extends GetxController {
     super.onInit();
   }
 
+  var isLoading = true.obs;
   var imageList = List<ImageRemote>.empty().obs;
   void fetchImages() async {
-    var images = await ImageServices.getImage();
-    if (images != null) {
-      imageList.value = images;
+    try {
+      isLoading(true);
+      var images = await ImageServices.getImage();
+      if (images != null) {
+        imageList.value = images;
+      }
+    } finally {
+      isLoading(false);
     }
   }
 }
